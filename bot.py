@@ -1,14 +1,15 @@
 import logging
+import os
 from datetime import date
 from telegram import Update, InlineKeyboardMarkup, InlineKeyboardButton as IB
 from telegram.ext import Application, CommandHandler, MessageHandler, CallbackQueryHandler, filters, ContextTypes
 
 logging.basicConfig(level=logging.INFO)
 
-# Mac’da test uchun
-BOT_TOKEN = "8168901649:AAHXXVU0FSYmKx5UhyQRQ-DaPsN-5JCR_vk"
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN o'rnatilmagan!")
 
-# 3 ta admin ID
 ADMIN_IDS = [327097376, 848972474, 5601591079]
 
 def arrival_kb():
